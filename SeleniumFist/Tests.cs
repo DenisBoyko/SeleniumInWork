@@ -36,6 +36,7 @@ namespace SeleniumFist
         {
             seleniumSetMethods.Click(driver, mainPage.tourButton,"CssSelector", 3000);
             Assert.AreEqual    (seleniumSetMethods.GetText(driver, tourPageObject.assertPohodButton), "ПОХОД ПО КИПРУ");
+
         }
 
         
