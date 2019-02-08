@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using System.Threading;
 
 namespace SeleniumFist
@@ -7,11 +8,11 @@ namespace SeleniumFist
     public class SeleniumSetMethods
     {
            
-        public void OpenBrowser(IWebDriver driver, string url, int wait)
+        public void OpenBrowser(IWebDriver driver, string url)
         {
             driver.Navigate().GoToUrl(url);
             driver.Manage().Window.Maximize();
-            Thread.Sleep(wait);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
         }
            
 
@@ -50,6 +51,8 @@ namespace SeleniumFist
             return driver.FindElement(By.CssSelector(element)).Text;
         }
 
+        
+    
 
     }
     

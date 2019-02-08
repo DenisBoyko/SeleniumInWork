@@ -1,4 +1,4 @@
-﻿
+﻿using OpenQA.Selenium;
 
 namespace PageObject
 {

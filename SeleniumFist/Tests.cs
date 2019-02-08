@@ -17,12 +17,21 @@ namespace SeleniumFist
         IWebDriver driver = new ChromeDriver();
         SeleniumSetMethods seleniumSetMethods = new SeleniumSetMethods();
         MainPageObject mainPage = new MainPageObject();
-        TourPageObject tourPageObject = new PageObject.TourPageObject();
+        TourPageObject tourPageObject = new TourPageObject();
 
         [SetUp]
         public void OpenBrowser()
         {
-            seleniumSetMethods.OpenBrowser(driver,mainPage.Url, 5000);
+            seleniumSetMethods.OpenBrowser(driver,mainPage.Url);
+        }
+        
+
+        [Test]
+        public void ExecuteTest()
+        {
+            seleniumSetMethods.Click(driver, mainPage.tourButton,"CssSelector", 3000);
+            Assert.AreEqual(seleniumSetMethods.GetText(driver, tourPageObject.assertPohodButton), "ПОХОД ПО КИПРУ");
+
         }
 
         [TearDown]
@@ -31,16 +40,8 @@ namespace SeleniumFist
             driver.Close();
         }
 
-        [Test]
-        public void ExecuteTest()
-        {
-            seleniumSetMethods.Click(driver, mainPage.tourButton,"CssSelector", 3000);
-            Assert.AreEqual    (seleniumSetMethods.GetText(driver, tourPageObject.assertPohodButton), "ПОХОД ПО КИПРУ");
 
-        }
 
-        
-        
 
     }
 }
